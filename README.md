@@ -2,8 +2,8 @@
 
 ## 👤 Student Information
 - **Name:** Muhammad
-- **Roll Number:** CS-12345
-- **Section:** BSCS-5A
+- **Roll Number:** F23BDOCS1M01110
+- **Section:** BSCS-1M F23
 
 ## 📘 Project Overview
 **CampusConnect** is a user-friendly Lost & Found platform designed to help students and staff efficiently report and recover misplaced items on campus and avoid clutter and noise in our Whatsapp groups actually made for academic purposes.
