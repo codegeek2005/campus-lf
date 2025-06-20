@@ -1,0 +1,59 @@
+{
+  "listings": [
+    {
+      "id": "2",
+      "title": "Found Water Bottle",
+      "status": "Claimed",
+      "location": "Cafeteria",
+      "contact": "0300-8765432",
+      "description": "Blue bottle with cartoon stickers.",
+      "image": "",
+      "date": "2025-06-06",
+      "trackingId": "FOUND-20250606-KD77"
+    },
+    {
+      "id": "3",
+      "title": "Lost Notebook",
+      "status": "Lost",
+      "location": "CS Block",
+      "contact": "0311-4567890",
+      "description": "Red notebook with machine learning notes.",
+      "image": "",
+      "date": "2025-06-07",
+      "trackingId": "LOST-20250607-RT99"
+    },
+    {
+      "id": "4",
+      "title": "Found Earbuds",
+      "status": "Found",
+      "location": "Auditorium",
+      "contact": "0304-1901432",
+      "description": "Black wireless earbuds in a charging case.",
+      "image": "",
+      "date": "2025-06-04",
+      "trackingId": "FOUND-20250604-XP88"
+    },
+    {
+      "id": "5",
+      "title": "Lost Keys",
+      "status": "Lost",
+      "location": "Parking Lot",
+      "contact": "0303-4321123",
+      "description": "Set of keys with a red keychain and USB.",
+      "image": "",
+      "date": "2025-06-03",
+      "trackingId": "LOST-20250603-MK55"
+    },
+    {
+      "id": "0e76",
+      "title": "Laptop",
+      "location": "CS department",
+      "contact": "0302-123456789",
+      "description": "PM Shehbaz Laptop",
+      "status": "Claimed",
+      "image": "",
+      "date": "2025-06-15",
+      "trackingId": "LOST-20250615-PA74"
+    }
+  ]
+}
