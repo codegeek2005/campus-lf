@@ -48,3 +48,6 @@ This app is intended for academic use and demonstrates concepts such as componen
 ---
 
 > Made with 💛 by Muhammad, a student who believes it's our responsibility to improve campus life for everyone.
+
+# campus-lf
+CS 4th Semester Web Project
