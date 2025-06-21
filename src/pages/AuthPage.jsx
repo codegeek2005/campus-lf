@@ -18,7 +18,7 @@ const AuthPage = () => {
     try {
       await loginWithEmail(email, password);
       alert('Logged in!');
-      navigate('/'); 
+      navigate('/new'); 
     } catch (err) {
       alert(err.message);
     }
@@ -30,12 +30,24 @@ const AuthPage = () => {
     const password = e.target.signupPassword.value;
     try {
       await signUpWithEmail(email, password);
+      navigate('/new')
       alert('Account created!');
       setActiveTab('login');
     } catch (err) {
       alert(err.message);
     }
   };
+
+  const handleLoginWithGoogle = async ()=>{
+    try{
+      await loginWithGoogle();
+      navigate('/new')
+    }catch(err){
+      console.error(err)
+      alert(err.message)
+    
+  }
+}
 
 
 
@@ -61,7 +73,7 @@ const AuthPage = () => {
 
                 <Tab.Content>
                   <Tab.Pane eventKey="login">
-                    <Form>
+                    <Form onSubmit={handleLogin}>
                       <Form.Group className="mb-3" controlId="loginEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" required />
@@ -70,7 +82,7 @@ const AuthPage = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" required />
                       </Form.Group>
-                      <Button variant="dark" className="w-100" onClick={()=>loginWithEmail}>Login</Button>
+                      <Button variant="dark" className="w-100" type='submit'>Login</Button>
                     </Form>
                     <div className="mt-3 text-center">
                       Don't have an account?{' '}
@@ -87,7 +99,7 @@ const AuthPage = () => {
 
                     <Button
                       variant="light"
-                      onClick={loginWithGoogle}
+                      onClick={handleLoginWithGoogle}
                       className="d-flex align-items-center justify-content-center border w-100 shadow-sm"
                       style={{ gap: '10px', padding: '10px', fontWeight: '500' }}
                     >
@@ -99,7 +111,7 @@ const AuthPage = () => {
                   </Tab.Pane>
 
                   <Tab.Pane eventKey="signup">
-                    <Form>
+                    <Form onSubmit={handleSignup}>
                       <Form.Group className="mb-3" controlId="signupName">
                         <Form.Label>Full Name</Form.Label>
                         <Form.Control type="text" placeholder="Your name" required />
@@ -112,7 +124,7 @@ const AuthPage = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" required />
                       </Form.Group>
-                      <Button variant="dark" className="w-100" onClick={()=>signUpWithEmail}>Sign Up</Button>
+                      <Button variant="dark" className="w-100" type='submit'>Sign Up</Button>
                     </Form>
                     <div className="mt-3 text-center">
                       Already have an account?{' '}
@@ -129,7 +141,7 @@ const AuthPage = () => {
 
                     <Button
                       variant="light"
-                      onClick={loginWithGoogle}
+                      onClick={handleLoginWithGoogle}
                       className="d-flex align-items-center justify-content-center border w-100 shadow-sm"
                       style={{ gap: '10px', padding: '10px', fontWeight: '500' }}
                     >

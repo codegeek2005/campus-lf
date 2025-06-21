@@ -15,9 +15,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup
 } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 
-const navigate = useNavigate()
 
 
 export const uploadImageToCloudinary = async (file) => {
@@ -95,17 +93,14 @@ export const getRecentListings = async (count = 3) => {
 
 
 //authentication functions
-export const signUpWithEmail = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
-  navigate('/new')
+export const signUpWithEmail = async (email, password) => {
+  return await createUserWithEmailAndPassword(auth, email, password);
 }
 
-export const loginWithEmail = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password);
-  navigate('/new')
+export const loginWithEmail = async (email, password) => {
+  return await signInWithEmailAndPassword(auth, email, password);
 }
 
-export const loginWithGoogle = () => {
-  signInWithPopup(auth, googleProvider);
-  navigate('/new')
+export const loginWithGoogle = async () => {
+  return await signInWithPopup(auth, googleProvider);
 }
