@@ -5,11 +5,13 @@ import { useEffect, useState } from 'react';
 import notFoundSVG from '/noData.svg'
 import { deleteListing, getListingById, updateListing } from '../utils/helper';
 import { auth } from '../config/firebase';
+import Loading from '../components/Loading';
 
 const SingleListing = ({}) => {
   
 
   const [listing, setListing] = useState({})
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -22,7 +24,10 @@ const SingleListing = ({}) => {
         // const res = await fetch(`/api/listings/${id}`)
         // const data = await res.json();
 
+          
+        setLoading(true)
         const data = await getListingById(id)
+        setLoading(false)
 
         setListing(data);
       } catch(error){
@@ -131,6 +136,7 @@ const handleDelete = async () => {
               <FaArrowLeft className='me-2'/>Go Back
             </Button>
       <Card className="shadow-lg p-4">
+        {loading && <Loading text='fetching data'/>}
         <Row>
           <Col md={6} className='d-flex align-items-center flex-column'>
             <Image src={imageURL || notFoundSVG} className="img-fluid rounded" style={{height:'25rem'}}  />

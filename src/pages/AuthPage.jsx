@@ -4,10 +4,12 @@ import { Container, Row, Col, Card, Form, Button, Tab, Nav } from 'react-bootstr
 import { loginWithEmail, signUpWithEmail, loginWithGoogle } from '../utils/helper.js';
 import { FcGoogle } from 'react-icons/fc';
 import loginSvg from '/login_model.svg';
+import Loading from '../components/Loading.jsx';
 
 
 const AuthPage = () => {
   const [activeTab, setActiveTab] = useState('login');
+  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
 
@@ -16,7 +18,9 @@ const AuthPage = () => {
     const email = e.target.loginEmail.value;
     const password = e.target.loginPassword.value;
     try {
+      setLoading(true);
       await loginWithEmail(email, password);
+      setLoading(false);
       alert('Logged in!');
       navigate('/new'); 
     } catch (err) {
@@ -29,7 +33,9 @@ const AuthPage = () => {
     const email = e.target.signupEmail.value;
     const password = e.target.signupPassword.value;
     try {
+      setLoading(true)
       await signUpWithEmail(email, password);
+      setLoading(false)
       navigate('/new')
       alert('Account created!');
       setActiveTab('login');
@@ -40,7 +46,10 @@ const AuthPage = () => {
 
   const handleLoginWithGoogle = async ()=>{
     try{
+      
+      setLoading(true)
       await loginWithGoogle();
+      setLoading(false)
       navigate('/new')
     }catch(err){
       console.error(err)
@@ -54,6 +63,7 @@ const AuthPage = () => {
 
   return (
       <Container fluid className="my-5 h-100">
+        {loading && <Loading text="authenticating"/>}
         <Row className="h-100 align-items-center">
           <Col md={6} className="d-flex align-items-center justify-content-center">
           <img src={loginSvg} alt="Login Illustration" className="img-fluid w-75" />

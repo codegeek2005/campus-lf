@@ -2,6 +2,7 @@ import Listings from '../components/Listings';
 import { Button, Container, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { getAllListings } from '../utils/helper';
+import Loading from '../components/Loading';
 
 const ListingsPage = () => {
 
@@ -34,7 +35,10 @@ const ListingsPage = () => {
         //     } finally{
         //         setLoading(false)
         //     }
+        
+        setLoading(true)
         const data = await getAllListings()
+        setLoading(false)
         setListings(data)
         setFilteredListings(data)
         }
@@ -73,6 +77,8 @@ const ListingsPage = () => {
 
   return (
     <>
+
+    {loading && <Loading text="Fetching data" />}
     <Container className="mt-4 mb-2">
         <Form.Control
           type="text"
