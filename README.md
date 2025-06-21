@@ -51,3 +51,5 @@ This app is intended for academic use and demonstrates concepts such as componen
 
 # campus-lf
 CS 4th Semester Web Project
+#  Course Mentor
+Sir Omer Ajmal
