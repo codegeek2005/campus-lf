@@ -70,7 +70,7 @@ const AuthPage = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" required />
                       </Form.Group>
-                      <Button variant="dark" className="w-100">Login</Button>
+                      <Button variant="dark" className="w-100" onClick={()=>loginWithEmail}>Login</Button>
                     </Form>
                     <div className="mt-3 text-center">
                       Don't have an account?{' '}
@@ -112,7 +112,7 @@ const AuthPage = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" required />
                       </Form.Group>
-                      <Button variant="dark" className="w-100">Sign Up</Button>
+                      <Button variant="dark" className="w-100" onClick={()=>signUpWithEmail}>Sign Up</Button>
                     </Form>
                     <div className="mt-3 text-center">
                       Already have an account?{' '}

@@ -169,7 +169,7 @@ const handleDelete = async () => {
           </Button>
 
           
-          {currentUser && auth.currentUser.uid === item.userId && (
+          {currentUser && auth.currentUser.uid === userId && (
             <>
               <Button
                 variant="success"
