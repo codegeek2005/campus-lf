@@ -15,7 +15,7 @@
 - **Routing:** React Router DOM
 
 ## ✨ Features
-- Post new listings for lost/found items with up to 4 images
+- Post new listings for lost/found items with an image
 - View all listings with:
   - **Search bar** (by title, description, location, contact, or ID)
   - **Filter by status** (Lost, Found, Claimed)
