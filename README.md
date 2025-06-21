@@ -1,55 +1,62 @@
-# CampusConnect - Lost & Found Web App
+# Campus Lost & Found (Campus LF)
 
-## 👤 Student Information
-- **Name:** Muhammad
-- **Roll Number:** F23BDOCS1M01110
-- **Section:** BSCS-1M F23
+**Author:** Muhammad bin Ramzan  
+**Roll Number:** F23BDOCS1M01110
+**Section:** F23 CS-1M
+**Mentor:** Sir Omer Ajmal
 
-## 📘 Project Overview
-**CampusConnect** is a user-friendly Lost & Found platform designed to help students and staff efficiently report and recover misplaced items on campus and avoid clutter and noise in our Whatsapp groups actually made for academic purposes.
-
-## 🔧 Tech Stack
-- **Frontend:** React.js, React Bootstrap
-- **Backend API:** JSON Server (RESTful API simulation)
-- **Image Upload:** Cloudinary
-- **Routing:** React Router DOM
-
-## ✨ Features
-- Post new listings for lost/found items with an image
-- View all listings with:
-  - **Search bar** (by title, description, location, contact, or ID)
-  - **Filter by status** (Lost, Found, Claimed)
-- Detailed listing page with:
-  - **Mark as Claimed** button (PUT request)
-  - **Clipboard copy** feature for listing details
-  - **Delete listing** option
-- Clean and responsive UI using Bootstrap
-- Friendly and helpful tone throughout the app to foster community care
-
-## 🛠️ How to Run
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Start the JSON server:
-   ```bash
-   npm run server
-   ```
-
-3. Start the React development server:
-   ```bash
-   npm start
-   ```
-
-## 🔗 Note
-This app is intended for academic use and demonstrates concepts such as component-based UI, API handling, state management, and basic CRUD operations in React. And can be used in future to actually improve campus life at Islamia University of Bahawalpur.
 
 ---
 
-> Made with 💛 by Muhammad, a student who believes it's our responsibility to improve campus life for everyone.
+## 🔍 Project Overview
 
-# campus-lf
-CS 4th Semester Web Project
-#  Course Mentor
-Sir Omer Ajmal
+A simple yet functional **Lost and Found web application** for campus students to report lost/found items. Built using **React**, **Bootstrap**, and **Firebase**.
+
+---
+
+## 🔥 Firebase Features Implemented
+
+- **Firestore Database**: Store and fetch listings (lost/found items).
+- **Authentication**:
+  - Email/password signup and login.
+  - Google Sign-in using Firebase Auth.
+- **Image Uploading**:
+  - (Optional) Cloudinary used for free-tier image hosting.
+- **User-based Listing Actions**:
+  - Only listing owner can delete or mark as claimed.
+- **Deployment**:
+  - Hosted using **Firebase Hosting**.
+  - GitHub CI/CD setup supported (auto-deploy on push to `main`).
+
+---
+
+## 💻 Run Locally with Mock API
+
+If you want to run the project **without Firebase**, you can use the local `db.json` file:
+
+1. Open terminal and run:
+   ```bash
+   npm run server
+   ```
+   This will start a JSON server at `http://localhost:5000`.
+
+2. In the code, **uncomment** the API-fetching code in helper functions that use `fetch()` instead of Firebase.
+
+---
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+> Make sure to configure your Firebase credentials in `firebase.js`.
+
+---
+
+## 🔗 Live Demo
+
+[🌐 Visit Live Website](https://campus-lf.web.app)
+
+---
