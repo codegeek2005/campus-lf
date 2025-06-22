@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import ListingsPage from './pages/ListingsPage';
 import SingleListing from './pages/SingleListing';
 import About from './pages/About';
+import { Toaster } from 'sonner';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <>
       <Navbar />
+      <Toaster richColors position="top-center" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/new" element={<AddListingPage/>} />

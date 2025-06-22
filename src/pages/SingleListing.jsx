@@ -3,9 +3,10 @@ import { FaArrowLeft, FaMapMarkerAlt } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import notFoundSVG from '/noData.svg'
-import { deleteListing, getListingById, updateListing } from '../utils/helper';
+import { deleteListing, getListingById, updateListing } from '../utils/helper.js';
 import { auth } from '../config/firebase';
 import Loading from '../components/Loading';
+import { toast } from 'sonner';
 
 const SingleListing = ({}) => {
   
@@ -46,6 +47,7 @@ const SingleListing = ({}) => {
     status,
     contact,
     date,
+    userID,
     trackingId,
   } = listing;
 
@@ -69,11 +71,12 @@ const SingleListing = ({}) => {
     //   alert("Failed to update status.");
     // }
 
-    updateListing(updatedListing);
+    await updateListing(listing.id, updatedListing);
     setListing(updatedListing);
+    toast.success("Status set to claimed!")
   } catch (err) {
     console.error("Error updating status:", err);
-    alert("An error occurred.");
+    toast.error("An error occurred.");
   }
 };
 
@@ -93,7 +96,7 @@ ${window.location.href}
     .catch(() => alert("Failed to copy details."));
 };
 
-const handleDelete = async () => {
+const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this listing?");
     if (!confirmDelete) return;
 
@@ -108,11 +111,12 @@ const handleDelete = async () => {
       // } else {
       //   alert("Failed to delete listing.");
       // }
-      deleteListing(id)
+      await deleteListing(id)
       navigate('/listings'); // Redirect to listings page
+      toast.success("Listing was deleted.")
     } catch (err) {
       console.error("Delete error:", err);
-      alert("An error occurred.");
+      toast.error("An error occurred.");
     }
   };
 
@@ -175,11 +179,11 @@ const handleDelete = async () => {
           </Button>
 
           
-          {currentUser && auth.currentUser.uid === userId && (
+          {currentUser && auth.currentUser.uid === userID && (
             <>
               <Button
                 variant="success"
-                onClick={handleMarkAsClaimed}
+                onClick={()=>handleMarkAsClaimed(id)}
                 disabled={listing.status === 'Claimed'}
               >
                 Mark as Claimed
@@ -187,7 +191,7 @@ const handleDelete = async () => {
 
               <Button
                 variant="danger"
-                onClick={handleDelete}
+                onClick={()=>handleDelete(listing.id)}
                 disabled={listing.status === 'Claimed'}
               >
                 Delete Listing

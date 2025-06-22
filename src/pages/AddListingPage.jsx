@@ -5,6 +5,7 @@ import { data, useNavigate, Navigate } from 'react-router-dom';
 import { addListing } from '../utils/helper';
 import { serverTimestamp } from 'firebase/firestore';
 import { auth } from '../config/firebase';
+import { toast } from 'sonner';
 
 
 const CreateListingForm = () => {
@@ -93,6 +94,7 @@ const file = e.target.files[0];
   //     navigate(`/listings`)
   //   }
   addListing(listing)
+  toast.success('Listing added successfully.')
   navigate(`/listings`)
 
   } catch (error) {

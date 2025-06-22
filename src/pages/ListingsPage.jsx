@@ -11,7 +11,7 @@ const ListingsPage = () => {
   const [listings, setListings] = useState([]);
   const [filteredListings, setFilteredListings] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState('All')
+  const [filterStatus, setFilterStatus] = useState('')
 
 
 
@@ -42,10 +42,8 @@ const ListingsPage = () => {
         setListings(data)
         setFilteredListings(data)
         }
-        fetchListings();
 
-       
-            
+        fetchListings();    
     }, [])
 
     useEffect(() => {
@@ -78,14 +76,13 @@ const ListingsPage = () => {
   return (
     <>
 
-    {loading && <Loading text="Fetching data" />}
     <Container className="mt-4 mb-2">
         <Form.Control
           type="text"
           placeholder="Search by title, location, contact, ID..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-        />
+          />
 
               <Form.Select
         value={filterStatus}
@@ -99,7 +96,9 @@ const ListingsPage = () => {
 
       </Container>
 
-    <Listings listings = {searchTerm ? filteredListings : listings} />
+      <Listings listings = {filteredListings} />
+
+      {loading && <Loading text="Fetching data" />}
     </>
   )
 }

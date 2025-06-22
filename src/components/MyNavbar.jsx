@@ -5,6 +5,7 @@ import { auth } from '../config/firebase';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { toast } from 'sonner';
 
 const MyNavbar = () => {
 
@@ -20,6 +21,7 @@ const MyNavbar = () => {
 
   const handleLogout = async () => {
     await signOut(auth);
+    toast.success('Signed Out')
     navigate('/auth');
   };
 
@@ -33,15 +35,15 @@ const MyNavbar = () => {
           <Nav className="ms-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/new">Add Listing</Nav.Link>
+            <Nav.Link as={Link} to="/about">About Us</Nav.Link>
             <Nav.Link as={Link} to="/listings">Browse</Nav.Link>
             {user ? (
               <Button variant="outline-light" size="sm" onClick={handleLogout}>
                 Logout
               </Button>
             ) : (
-              <Nav.Link as={Link} to="/auth">Login</Nav.Link>
+              <Button as={Link} to="/auth" variant="warning">Login</Button>
             )}
-            <Nav.Link as={Link} to="/about">About Us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -5,11 +5,13 @@ import { loginWithEmail, signUpWithEmail, loginWithGoogle } from '../utils/helpe
 import { FcGoogle } from 'react-icons/fc';
 import loginSvg from '/login_model.svg';
 import Loading from '../components/Loading.jsx';
+import { toast } from 'sonner';
 
 
 const AuthPage = () => {
   const [activeTab, setActiveTab] = useState('login');
   const [loading, setLoading] = useState(false)
+
 
   const navigate = useNavigate()
 
@@ -21,11 +23,11 @@ const AuthPage = () => {
       setLoading(true);
       await loginWithEmail(email, password);
       setLoading(false);
-      alert('Logged in!');
-      navigate('/new'); 
+      navigate('/');
+      toast.success("Logged in successful")
     } catch (err) {
-      alert(err.message);
-    }
+      setLoading(false)
+      toast.error(`${err.message}`);    }
   };
 
   const handleSignup = async (e) => {
@@ -36,11 +38,11 @@ const AuthPage = () => {
       setLoading(true)
       await signUpWithEmail(email, password);
       setLoading(false)
-      navigate('/new')
-      alert('Account created!');
-      setActiveTab('login');
+      navigate('/')
+      toast.success('Account created successfully!')
     } catch (err) {
-      alert(err.message);
+      setLoading(false)
+      toast.error(err.message);
     }
   };
 
@@ -50,11 +52,12 @@ const AuthPage = () => {
       setLoading(true)
       await loginWithGoogle();
       setLoading(false)
-      navigate('/new')
+      navigate('/')
+      toast.success('Logged in via Google')
     }catch(err){
+      setLoading(false)
       console.error(err)
-      alert(err.message)
-    
+      toast.error(err.message)
   }
 }
 
@@ -62,6 +65,7 @@ const AuthPage = () => {
 
 
   return (
+    <>
       <Container fluid className="my-5 h-100">
         {loading && <Loading text="authenticating"/>}
         <Row className="h-100 align-items-center">
@@ -157,7 +161,7 @@ const AuthPage = () => {
                     >
                       <FcGoogle size={20} />
 
-                      Sign in with Google
+                      Sign up with Google
                     </Button>
 
                   </Tab.Pane>
@@ -168,6 +172,7 @@ const AuthPage = () => {
           </Col>
         </Row>
       </Container>
+    </>
   );
 };
 
