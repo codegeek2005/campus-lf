@@ -8,7 +8,7 @@ const Listings = ({ listings }) => {
 
   return (
     <Container className="py-5">
-      <Button variant="outline-primary" className="mt-2 ms-2 mb-0" onClick={() => navigate(-1)}>
+      <Button variant="outline-primary" className="mt-2 ms-2 mb-0" onClick={() => navigate('/')}>
         <FaArrowLeft className="me-2" /> Go Back
       </Button>
 

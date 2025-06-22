@@ -16,7 +16,7 @@ const Listing = ({ item }) => {
       <Card.Body className="d-flex flex-column justify-content-between">
         {/* Date & Status Badge */}
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <small className="text-muted">{new Date(item.date).toLocaleDateString()}</small>
+          <small className="text-muted">{item.date?.toDate().toLocaleDateString()}</small>
           <Badge bg={
             item.status === 'Lost' ? 'danger' :
             item.status === 'Found' ? 'success' : 'secondary'
